@@ -21,5 +21,5 @@ urlpatterns = [
     
     #Apps include
     path(r'', include('destinations.urls')),
-    path(r'clients/', include('clients.urls')),
+    path(r'', include('clients.urls')),
 ]

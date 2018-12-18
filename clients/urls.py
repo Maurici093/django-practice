@@ -5,6 +5,6 @@ from django.conf import settings
 
 
 urlpatterns = [
-    path('', views.show_client, name='show_client'),
-    # path('client/new/', views.new_client, name= 'new_client'),
+    path('clients/', views.show_client, name='show_client'),
+    path('client/new/', views.new_client, name= 'new_client'),
     ]

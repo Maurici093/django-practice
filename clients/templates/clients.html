@@ -6,6 +6,8 @@
 
 {% block page_content %}
 
+    <h3 style="text-align:center">Clientes Registrados</h3>
+
     {% if client %}
         <ul>
             {% for client in client %}
@@ -14,6 +16,7 @@
                 </li>
             {% endfor %}
         </ul>
+    <a href="{% url 'new_client' %}">New</a>
     {% else %}
         <h3 style="color: red"> No hay clientes registrados</h3>
     {% endif %}

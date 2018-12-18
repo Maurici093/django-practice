@@ -15,3 +15,23 @@ def show_client(request):
     return HttpResponse(template.render(context,request))
 
 
+def new_client(request):
+    if request.method == 'POST':
+        form = ClientForm(request.POST)
+        if form.is_valid():
+            client = form.save()
+            client.save()
+            return HttpResponseRedirect('/clients')
+    else:
+        form = ClientForm()
+    template = loader.get_template('new_client.html')
+    title = 'Registrando Cliente'
+    context = {
+        'form': form,
+        'title': title,
+    }
+    return HttpResponse(template.render(context, request))
+
+
+
+
