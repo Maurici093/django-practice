@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load staticfiles %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <title>
+        {% block page_title %}{% endblock %}
+    </title>
+</head>
+<body>
+    <header>
+        <h4 style="text-align:center">Header</h4>
+    </header>
+    <h1>Prueba</h1>
+    <section>
+        {% block page_content %}
+        {% endblock %}
+    </section>
+    <footer>
+     <h4 style="text-align:center">Vive una experiencia natural</h4>   
+    </footer>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+    {{ page_title }}
+{% endblock %}
+
+{% block page_content %}
+    {% if destination %}
+        <h1>si hay destinos</h1>
+       
+        <h2>Nuestros destinos</h2>
+    <ul>
+        {% for destination in destination %}
+            <li>
+               <!-- <a href="destinations/{{destination.pk}}"> -->
+                <a href= "{% url 'destination_detail' pk=destination.pk %}">
+                    {{destination.name}}
+                </a>  
+                {{destination.price}} | {{destination.category}}
+            </li>
+            <div id = ""> 
+                <img src="{{destination.image.url}}" title = "destino-{{destination.name}}"/>
+            </div>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'new_destination' %}" style="text-align: left">New</a>
+    {% else %}
+        <h2>No hay destinos</h2>
+    {% endif %}
+
+{% endblock %}

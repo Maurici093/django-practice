@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+    {{ title }}
+{% endblock %}
+
+{% block show_clients %}
+
+    {% if client %}
+        <ul>
+            {% for client in client %}
+                <li>
+                    {{client.pk}} | {{ client.name }} | {{ client.phone }} | {{ client.email }} | {{ client.address }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h3 style="color: red"> No hay clientes registrados</h3>
+    {% endif %}
+
+{% endblock %}

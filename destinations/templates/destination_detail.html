@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Destino - {{destination.name}}</title>
+</head>
+<body>
+
+{% block page_content %}
+    {% if destination %}
+        <h1 style="color:aqua; font: outline">{{destination.name}}</h1>
+        <p>Descripción: {{destination.description}}</p>
+        <div class ="image">
+            <img src="{{destination.image.url}}" />
+        </div>
+        <a href="/">a tras</a>
+    {% else %}
+        <h1 style="color:red">Destino no existe</h1>
+    {% endif %}
+        
+        
+    {% endblock %}
+</body>
+</html>
