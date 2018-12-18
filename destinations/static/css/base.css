@@ -9,3 +9,10 @@ header {
     width:  1330px;
     background-repeat: no-repeat;
 }
+
+footer {
+    background-image: url(../img/footer.png);
+    height: 700px;
+    width: 1330px;
+    background-repeat: no-repeat;
+}
