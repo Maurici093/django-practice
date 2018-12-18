@@ -4,10 +4,13 @@
     {{ page_title }}
 {% endblock %}
 
+{% block banner_description %}
+    {{ banner_description }}
+{% endblock %}
+
 {% block page_content %}
     {% if destination %}
-        <h1>si hay destinos</h1>
-       
+        <!--<h1>si hay destinos</h1>-->
         <h2>Nuestros destinos</h2>
     <ul>
         {% for destination in destination %}

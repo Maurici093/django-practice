@@ -2,10 +2,3 @@ body {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     background-color: rgb(202, 202, 202);
 }
-
-header {
-    background-image: url('../img/banner3.png');
-    height: 300px;
-    width:  1330px;
-    background-repeat: no-repeat;
-}

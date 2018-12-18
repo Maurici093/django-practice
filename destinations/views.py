@@ -10,9 +10,11 @@ def show_destination(request):
     destination = Destination.objects.order_by('id')
     template = loader.get_template('index.html')
     page_title = 'Ecoturismo En Colombia - Native Colombia - Agencia especializada'
+    banner_description = 'Vive Experiencias Naturales'
     context = {
         'destination': destination,
-        'page_title': page_title
+        'page_title': page_title,
+        'banner_description': banner_description,
     }
     return HttpResponse(template.render(context,request))
 
