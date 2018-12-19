@@ -1,5 +1,5 @@
 from django.db import models
-
+from clients.models import Client # import model client to related with favorite destination
 # Create your models here.
 
 class Destination(models.Model):
@@ -15,3 +15,13 @@ class Destination(models.Model):
     class Meta:
         ordering = ("id",)
 
+class Favorite(models.Model):
+    user = models.ForeignKey(Client, on_delete=models.PROTECT)
+    destination = models.ForeignKey(Destination, on_delete= models.PROTECT)
+    
+    class Meta:
+        verbose_name = 'Favorite'
+        verbose_name_plural = 'Favorites'
+
+    def __str__(self):
+        return '%s %s' % (self.user.name, self.destination.name)
