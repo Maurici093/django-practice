@@ -80,7 +80,7 @@ DATABASES = {
     'default': {
 
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'nativedb',
+        'NAME': 'nativecdb',
         'USER': 'admin',
         'PASSWORD': 'admin',
         'HOST': 'localhost',

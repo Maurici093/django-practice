@@ -21,8 +21,10 @@
                 </a>  
                 {{destination.price}} | {{destination.category}}
             </li>
-            <div id = ""> 
-                <img src="{{destination.image.url}}" title = "destino-{{destination.name}}"/>
+            <div id = "">
+                <a href="{% url 'destination_detail' pk=destination.pk %}">
+                    <img src="{{destination.image.url}}" title = "destino-{{destination.name}}"/>
+                </a>
             </div>
         {% endfor %}
     </ul>
