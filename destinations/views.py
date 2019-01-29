@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django.template import loader
 from .models import Destination
 from .forms import DestinationForm
+from django.views.generic import ListView
 
 # Create your views here.
 
@@ -56,3 +57,6 @@ def new_destination(request):
         'subtitle': subtitle
     }
     return HttpResponse(template.render(context, request))
+
+    class DestinationList(ListView):
+        model = Destination
