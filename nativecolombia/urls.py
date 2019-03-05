@@ -20,6 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     
     #Apps include
-    path(r'', include('destinations.urls')),
+    path(r'', include('destinations.urls',namespace='destinations')),
     path(r'', include('clients.urls')),
 ]

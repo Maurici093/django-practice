@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+    {{ page_title }}
+{% endblock %}
+
+{% block banner_description %}
+    {{ banner_description }}
+{% endblock %}
+
+{% block page_content %}
+<h3 style="color:crimson">
+    {% if user.is_authenticated %}
+        <h2>Bienvenido - {{user.username}}</h2> | <a href="{% url 'destinations_app:logout' %}">Logout</a>
+    {% else %}
+        <h2><a href="{% url 'destinations_app:authentication' %}">Login</a></h2>
+    {% endif %}
+</h3>
+    {% if object_list %}
+        <!--<h1>si hay destinos</h1>-->
+        <h2>Nuestros destinos</h2>
+    <ul>
+        {% for destination in object_list %}
+            <li>
+               <!-- <a href="destinations/{{destination.pk}}"> -->
+                <a href= "{% url 'destinations_app:destination_detail' destination.id %}">
+                    {{destination.name}}
+                </a>  
+                {{destination.price}} | {{destination.category}}
+            </li>
+            <div id = "">
+                <a href="{% url 'destinations_app:destination_detail' destination.id%}">
+                    <img src="{{destination.image.url}}" title = "Destino - {{destination.name}}"/>
+                </a>
+            </div>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'destinations_app:new_destination' %}" style="text-align: left">New</a>
+    {% else %}
+        <h2>No hay destinos</h2>
+    {% endif %}
+
+{% endblock %}

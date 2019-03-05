@@ -1,13 +1,24 @@
 from django.http import HttpResponse , HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import (
+    render, 
+    get_object_or_404,
+    redirect
+)
 from django.template import loader
 from .models import Destination
 from .forms import DestinationForm
 from django.views.generic import ListView
+from django.views.generic.detail import DetailView
+from django.contrib.auth import (
+    authenticate, 
+    login, 
+    logout
+)
+from django.contrib.auth.models import User
 
 # Create your views here.
 
-def show_destination(request):
+'''def show_destination(request):
     destination = Destination.objects.order_by('id')
     template = loader.get_template('index.html')
     page_title = 'Ecoturismo En Colombia - Native Colombia - Agencia especializada'
@@ -17,7 +28,7 @@ def show_destination(request):
         'page_title': page_title,
         'banner_description': banner_description,
     }
-    return HttpResponse(template.render(context,request))
+    return HttpResponse(template.render(context,request))'''
 
 '''def saludo(request):
     template = loader.get_template('saludo.html')
@@ -29,7 +40,7 @@ def show_destination(request):
     }
     return HttpResponse(template.render(context, request))'''
 
-def destination_detail(request, pk):
+'''def destination_detail(request, pk):
     destination = get_object_or_404(Destination, pk=pk)
     template = loader.get_template('destination_detail.html')
     title = 'Descripción - Destino:'
@@ -37,7 +48,7 @@ def destination_detail(request, pk):
         'destination': destination,
         'title': title
     }
-    return HttpResponse(template.render(context,request))
+    return HttpResponse(template.render(context,request))'''
 
 def new_destination(request):
     if request.method == 'POST':
@@ -58,5 +69,38 @@ def new_destination(request):
     }
     return HttpResponse(template.render(context, request))
 
-    class DestinationList(ListView):
-        model = Destination
+class DestinationList(ListView):
+    model = Destination
+
+class DestinationDetail(DetailView):
+    model = Destination
+
+def auth_login(request):
+    if request.method == 'POST':
+        action = request.POST.get('action',None)
+        username = request.POST.get('username',None)
+        password = request.POST.get('password',None)
+        
+        if action == 'login':
+            user = authenticate(username=username,password=password)
+            login(request,user)
+            return redirect('/')
+    context = {}
+    return render(request,'authenticate/login.html',context)
+
+def auth_signup(request):
+    if request.method == 'POST':
+        action = request.POST.get('action',None)
+        username = request.POST.get('username',None)
+        password = request.POST.get('password',None)
+
+        if action == 'signup':
+            user = User.objects.create_user(username=username, 
+                                        password=password)
+            user.save()
+    context = {}
+    return render (request,'authenticate/signup.html',context)
+
+def auth_logout(request):
+    logout(request)
+    return redirect('/login')
