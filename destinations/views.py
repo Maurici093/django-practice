@@ -1,4 +1,5 @@
 from django.http import HttpResponse , HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import (
     render, 
     get_object_or_404,
@@ -50,6 +51,7 @@ from django.contrib.auth.models import User
     }
     return HttpResponse(template.render(context,request))'''
 
+@login_required()
 def new_destination(request):
     if request.method == 'POST':
         form = DestinationForm(request.POST, request.FILES)

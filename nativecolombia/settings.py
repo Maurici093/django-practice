@@ -84,7 +84,7 @@ DATABASES = {
         'USER': os.environ['DJANGO_PRACTICE_USER'],
         'PASSWORD': os.environ['DJANGO_PRACTICE_PASSWORD'],
         'HOST': os.environ['DJANGO_PRACTICE_HOST'],
-        'PORT': os.environ['DJANGO_PRACTICE_PORT'],
+        'PORT': os.environ['DJANGO_PRACTICE_PORT']
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }

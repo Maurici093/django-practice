@@ -8,7 +8,7 @@ from django.conf.urls.static import static
 app_name = 'destinations_app'
 urlpatterns = [
     path('', views.DestinationList.as_view(), name='show_destination'),
-    path('login', views.auth_login, name='authentication'),
+    path('login/', views.auth_login, name='authentication'),
     path('signup',views.auth_signup, name='signup'),
     path('logout',views.auth_logout, name='logout'),
     path('destination/<int:pk>/', views.DestinationDetail.as_view(), name= 'destination_detail'),
