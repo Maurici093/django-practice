@@ -12,5 +12,6 @@ urlpatterns = [
     path('signup',views.auth_signup, name='signup'),
     path('logout',views.auth_logout, name='logout'),
     path('destination/<int:pk>/', views.DestinationDetail.as_view(), name= 'destination_detail'),
-    path('destination/new/', views.new_destination, name ='new_destination'),
+    path('destination/new/', views.DestinationNew.as_view(), name ='new_destination'),
+    path('destination/update/<int:pk>', views.DestinationUpdate.as_view(), name ='update_destination'),
 ]+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

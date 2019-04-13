@@ -38,3 +38,12 @@ ENV/
 env.bak/
 venv.bak/
 
+
+#media/
+
+media/
+.png 
+.jpg
+.jpeg
+
+

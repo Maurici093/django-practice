@@ -26,7 +26,10 @@
                 <a href= "{% url 'destinations_app:destination_detail' destination.id %}">
                     {{destination.name}}
                 </a>  
-                {{destination.price}} | {{destination.category}}
+                {{destination.price}} | {{destination.category}} |
+                {% if user.is_authenticated %}
+                <a href=" {% url 'destinations_app:update_destination' destination.id %}">Update</a>
+                {% endif %}
             </li>
             <div id = "">
                 <a href="{% url 'destinations_app:destination_detail' destination.id%}">
@@ -35,7 +38,9 @@
             </div>
         {% endfor %}
     </ul>
+    {% if user.is_authenticated %}
     <a href="{% url 'destinations_app:new_destination' %}" style="text-align: left">New</a>
+    {% endif %}
     {% else %}
         <h2>No hay destinos</h2>
     {% endif %}
